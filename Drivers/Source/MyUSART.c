@@ -18,10 +18,10 @@ void USART_config(USART_TypeDef* USARTx){
 	USARTx->CR1 = 0x00;														// Clear ALL
 	USARTx->CR1 |= USART_CR1_UE;									// Enable UART -> UA=1
 	
-	USARTx->CR1 |= ~USART_CR1_M ;									// 8 bits for word length, M=0
+	USARTx->CR1 |= USART_CR1_M ;									// 8 bits for word length, M=0
 	
-	USARTx->CR2 |= USART_CR1_TE; 									// Enable Transmitter, TE=1
-  USARTx->CR2 |= USART_CR1_RE;									// Enable the Receiver, RE=1
+	USARTx->CR1 |= USART_CR1_TE; 									// Enable Transmitter, TE=1
+  USARTx->CR1 |= USART_CR1_RE;									// Enable the Receiver, RE=1
 }
 
 

@@ -339,7 +339,7 @@
               <MiscControls></MiscControls>
               <Define></Define>
               <Undefine></Undefine>
-              <IncludePath>.\Include</IncludePath>
+              <IncludePath>.\Include;..\Services\USART;..\Drivers\Include</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -407,6 +407,16 @@
               <FileName>main.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\Source\main.c</FilePath>
+            </File>
+            <File>
+              <FileName>comm_USART.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Services\USART\comm_USART.c</FilePath>
+            </File>
+            <File>
+              <FileName>comm_USART.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Services\USART\comm_USART.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -751,7 +761,7 @@
               <MiscControls></MiscControls>
               <Define></Define>
               <Undefine></Undefine>
-              <IncludePath>.\Include;..\Drivers\Include</IncludePath>
+              <IncludePath>.\Include;..\Drivers\Include;..\Services\USART</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -819,6 +829,16 @@
               <FileName>main.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\Source\main.c</FilePath>
+            </File>
+            <File>
+              <FileName>comm_USART.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Services\USART\comm_USART.c</FilePath>
+            </File>
+            <File>
+              <FileName>comm_USART.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Services\USART\comm_USART.h</FilePath>
             </File>
           </Files>
         </Group>
