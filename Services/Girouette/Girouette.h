@@ -2,10 +2,11 @@
 #define GIROUETTE_H
 #include "stm32f10x.h"
 #include "MyTimer.h"
+#include "Driver_GPIO.h"
 
 
 
-void init_girouette ( MyTimer_Struct_TypeDef *Timer );
-float Calcul_Angle_Girouette(MyTimer_Struct_TypeDef Timer);
+void girouette_init ( MyTimer_Struct_TypeDef *Timer);
+float girouette_Calcul_Angle(MyTimer_Struct_TypeDef Timer);
 
 #endif

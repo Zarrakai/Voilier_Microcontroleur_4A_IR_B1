@@ -1,17 +1,26 @@
 #include "Girouette.h"
-#include "Driver_GPIO.h"
 
 
-void girouette_init ( MyTimer_Struct_TypeDef *Timer )
+void girouette_init ( MyTimer_Struct_TypeDef *Timer)
 {
-	/*
-	A FAIRE : 
-	Activer le GPIO A ici avec MyGPIO_Init car on l'utilise pour PA0 et PA1
+	MyGPIO_Struct_TypeDef GPIO_Girouette_0, GPIO_Girouette_1 ;
+		
+	GPIO_Girouette_0.GPIO = GPIOA;
+	GPIO_Girouette_0.GPIO_Pin = 0;
+	GPIO_Girouette_0.GPIO_Conf = In_Floating;
+	GPIO_Girouette_0.odr = 0;
+	MyGPIO_Init(& GPIO_Girouette_0);
 	
-	*/
+	GPIO_Girouette_1.GPIO = GPIOA;
+	GPIO_Girouette_1.GPIO_Pin = 1;
+	GPIO_Girouette_1.GPIO_Conf = In_Floating;
+	GPIO_Girouette_1.odr = 0;
+	
+	MyGPIO_Init(& GPIO_Girouette_1);
 	Timer->ARR = 360*4-1;
-	Timer->PSC=0;
-	Timer->Timer =TIM2;
+	Timer->PSC = 0;
+	Timer->Timer = TIM2;
+	
 	MyTimer_Base_Init(Timer);
 	MyTimer_Base_Start(Timer->Timer);
 	MyTimer_Mode_Compteur_Incremental(Timer->Timer);
