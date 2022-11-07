@@ -4,8 +4,9 @@
 
 //
 void comm_USART_config(USART_TypeDef * myUsart);
+
 //
-int8_t comm_USART_wait_data (USART_TypeDef * USARTx);
+int8_t comm_USART_get_data (USART_TypeDef * USARTx);
 
 /**/
 void USART_send_data (char * word);

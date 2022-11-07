@@ -8,13 +8,8 @@ void comm_USART_config(USART_TypeDef * myUsart){
 }
 
 
-int8_t comm_USART_wait_data(USART_TypeDef * myUsart){
-
-	while(1){
-		if(is_USART_DR_not_empty(myUsart)){
+int8_t comm_USART_get_data(USART_TypeDef * myUsart){
 			return (int8_t)USART_get_data(myUsart);
-		}
-	}
 }
 
 
