@@ -9,7 +9,7 @@ int main ( void )
 	girouette_init(&Timer);
 	do
 	{
-		float angle = girouette_Calcul_Angle(Timer);
+		float angle = girouette_Calcul_Angle();
 	}while ( 1 );
 }
 

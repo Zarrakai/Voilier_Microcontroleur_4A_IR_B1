@@ -6,7 +6,7 @@
 
 
 
-void girouette_init ( MyTimer_Struct_TypeDef *Timer);
-float girouette_Calcul_Angle(MyTimer_Struct_TypeDef Timer);
+void girouette_init ( MyTimer_Struct_TypeDef *t);
+float girouette_Calcul_Angle(void);
 
 #endif
