@@ -7,12 +7,11 @@
 		GPIO_TypeDef * GPIO ;
 		char GPIO_Pin ; // numero de 0 a 15
 		char GPIO_Conf ; // v o i r c i d e s s o u s
-		char odr ;
 	} MyGPIO_Struct_TypeDef ;
 
 	#define In_Floating 0x4
 	#define In_PullDown 0x8
-	#define In_PullUp 0x8 
+	#define In_PullUp 0x18	//ODR se fixe a 1 
 	#define In_Analog 0x0 
 	#define Out_Ppull 0x2 
 	#define Out_OD 0x6 
