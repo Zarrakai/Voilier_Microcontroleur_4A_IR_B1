@@ -16,10 +16,11 @@ int8_t comm_USART_get_data(USART_TypeDef * myUsart){
 
 
 void comm_PWM_conf_timer(MyTimer_Struct_TypeDef * Timer) {
-	// Timer freq = clock freq. / ((ARR+1)*(PSC+1)) <=> Timer freq = 36Mhz /((17+1)*(0+1)) = 20Mhz
-	Timer->ARR = 17;
-	Timer->PSC = 0;
+	// Timer freq = clock freq. / ((ARR+1)*(PSC+1)) <=> Timer freq = 36Mhz /((99+1)*(17+1)) = 20Khz
+	Timer->ARR = 99;
+	Timer->PSC = 17;
 	MyTimer_Base_Init(Timer);
+	Timer->Timer->CR1 |= TIM_CR1_CEN;
 }
 
 void comm_PWM_conf(MyTimer_Struct_TypeDef * Timer, int Channel){

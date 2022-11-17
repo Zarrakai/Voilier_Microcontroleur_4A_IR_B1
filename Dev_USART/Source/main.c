@@ -3,12 +3,21 @@
 #include "Driver_GPIO.h"
 
 int8_t data;  // POUR TESTER 
+USART_TypeDef * myUsart = USART1;
+MyGPIO_Struct_TypeDef GPIOStruct_PWM;
+MyTimer_Struct_TypeDef TIM_PWM;
+	
+void SysTick_Handler(void){
+		data = comm_USART_get_data(myUsart);
+		comm_USART_data_sign(data, &GPIOStruct_PWM);
+		data = comm_USART_data_abs(data);
+		if (data != 0)
+			comm_PWM_set_CCR(&TIM_PWM, 4, data);
+}
 	
 int main(void){
 	//tester USART
-	USART_TypeDef * myUsart = USART1;
-	MyGPIO_Struct_TypeDef GPIOStruct_usart, GPIOStruct_PWM;
-	MyTimer_Struct_TypeDef TIM_PWM;
+	MyGPIO_Struct_TypeDef GPIOStruct_usart;	
 	
 	GPIOStruct_usart.GPIO = GPIOA;
 	GPIOStruct_usart.GPIO_Conf = In_Floating;
@@ -31,13 +40,9 @@ int main(void){
 	comm_PWM_conf_timer(&TIM_PWM);
 	comm_PWM_conf(&TIM_PWM, 4);
 	
-	while(1){
-		data = comm_USART_get_data(myUsart);
-		comm_USART_data_sign(data, &GPIOStruct_PWM);
-		data = comm_USART_data_abs(data);
-		if (data != 0)
-			comm_PWM_set_CCR(&TIM_PWM, 4, data);
-	}
+	SysTick_Config(7200000);
+	
+	while(1);
 }
 
 
