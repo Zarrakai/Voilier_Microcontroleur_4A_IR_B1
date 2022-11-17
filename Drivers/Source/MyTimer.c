@@ -2,6 +2,7 @@
 #include "MyTimer.h"
 
 void (*ptFonction ) ( void );
+void (*ptFonction_EXTI2 ) ( void );
 
 void MyTimer_Base_Init ( MyTimer_Struct_TypeDef * Timer )
 	{
@@ -48,11 +49,27 @@ void MyTimer_ActiveIT ( TIM_TypeDef * Timer , char Prio , void (*IT_function ) (
 	ptFonction = IT_function;
 }
 
+void MyGPIO_ActiveIT_EXTI2_PB2 ( char Prio, void (*IT_function ) ( void )) 
+{
+	NVIC_EnableIRQ(EXTI2_IRQn);
+	NVIC_SetPriority(EXTI2_IRQn, Prio);
+	
+	ptFonction_EXTI2 = IT_function;
+}
+
 void TIM2_IRQHandler(void)
 {
 	// désactivation de UIF
 	TIM2->SR &= ~(0x01);
 	(*ptFonction)();
+	
+}
+
+void EXTI2_IRQHandler(void)
+{
+	// désactivation de UIF
+	EXTI->PR |= EXTI_PR_PR2;
+	(*ptFonction_EXTI2)();
 	
 }
 

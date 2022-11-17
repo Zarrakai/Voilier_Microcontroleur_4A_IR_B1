@@ -37,6 +37,7 @@ void MyTimer_PWM( TIM_TypeDef * Timer , char Channel ) ;
 void MyTimer_Mode_Compteur_Incremental(TIM_TypeDef * Timer);
 int My_Timer_Get_CRR(TIM_TypeDef * Timer);
 void My_Timer_Set_ARR(TIM_TypeDef * Timer,int value);
+void MyGPIO_ActiveIT_EXTI2_PB2 ( char Prio, void (*IT_function ) ( void )) ;
 
 #define MyTimer_Base_Start(Timer)( Timer->CR1 |= 0x1)
 #define MyTimer_Base_Stop(Timer)( Timer->CR1 &= ~0x1)

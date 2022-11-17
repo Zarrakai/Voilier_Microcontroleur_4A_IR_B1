@@ -3,15 +3,16 @@
 
 
 MyTimer_Struct_TypeDef *Timer;
-void girouette_ActiveIT_PA2 ( char Prio);
+void girouette_calibrer_timer (void);
 
 
 void girouette_init ( MyTimer_Struct_TypeDef *t)
 {
-	MyGPIO_Struct_TypeDef GPIO_Girouette_PA0, GPIO_Girouette_PA1, GPIO_Girouette_PA2;
+	MyGPIO_Struct_TypeDef GPIO_Girouette_PA0, GPIO_Girouette_PA1, GPIO_Girouette_PB2;
 	
 	Timer = t;
 	
+	// PA0 et PA1 => Pin 1 et 2 de la girouette
 	GPIO_Girouette_PA0.GPIO = GPIOA;
 	GPIO_Girouette_PA0.GPIO_Pin = 0;
 	GPIO_Girouette_PA0.GPIO_Conf = In_Floating;
@@ -22,11 +23,11 @@ void girouette_init ( MyTimer_Struct_TypeDef *t)
 	GPIO_Girouette_PA1.GPIO_Conf = In_Floating;
 	MyGPIO_Init(& GPIO_Girouette_PA1);
 	
-	// PA2 => Index
-	GPIO_Girouette_PA2.GPIO = GPIOA;
-	GPIO_Girouette_PA2.GPIO_Pin = 2;
-	GPIO_Girouette_PA2.GPIO_Conf = In_Floating;
-	MyGPIO_Init(& GPIO_Girouette_PA2);
+	// PB2 => Index girouette
+	GPIO_Girouette_PB2.GPIO = GPIOB;
+	GPIO_Girouette_PB2.GPIO_Pin = 2;
+	GPIO_Girouette_PB2.GPIO_Conf = In_Floating;
+	MyGPIO_Init(& GPIO_Girouette_PB2);
 	
 	Timer->ARR = 360*4-1;
 	Timer->PSC = 0;
@@ -36,28 +37,19 @@ void girouette_init ( MyTimer_Struct_TypeDef *t)
 	MyTimer_Base_Start(Timer->Timer);
 	MyTimer_Mode_Compteur_Incremental(Timer->Timer);
 	
-	EXTI->IMR |= EXTI_IMR_MR2;
-	EXTI->RTSR |= EXTI_RTSR_TR2;
-	girouette_ActiveIT_PA2(1);
+	MyGPIO_Activate_AFIO();
+	MyGPIO_Config_exti2PB();
+	MyGPIO_ActiveIT_EXTI2_PB2(1,&girouette_calibrer_timer);
 }
-
+	
 
 float girouette_Calcul_Angle(void){
 	 int value = Timer->Timer->CNT;
 	 return (float)value /4.;
 }
 
-void girouette_ActiveIT_PA2 ( char Prio) 
-{
-	int interruptNumber ;
-	interruptNumber = EXTI2_IRQn;
-	
-	NVIC_EnableIRQ(interruptNumber);
-	NVIC_SetPriority(interruptNumber, Prio);
-	
-}
 
-void EXTI2_IRQHandler(void)
+void girouette_calibrer_timer(void)
 {
-	 Timer->Timer->CNT = 0;
+	Timer->Timer->CNT = 0;
 }

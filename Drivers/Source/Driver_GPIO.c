@@ -90,9 +90,18 @@ void MyGPIO_Toggle ( GPIO_TypeDef * GPIO , char GPIO_Pin )
 		 MyGPIO_Set(GPIO,GPIO_Pin);
 	 }
 }
+void MyGPIO_Activate_AFIO(void)
+{
+	RCC->APB2ENR |= RCC_APB2ENR_AFIOEN;
+}
 
-
-
+void MyGPIO_Config_exti2PB(void)
+{
+	AFIO->EXTICR[0] = AFIO_EXTICR1_EXTI2_PB;
+	
+	EXTI->IMR |= EXTI_IMR_MR2;
+	EXTI->RTSR |= EXTI_RTSR_TR2;
+}
 
 
 
