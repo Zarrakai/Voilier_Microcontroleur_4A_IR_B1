@@ -35,6 +35,7 @@ Activité 2 : Utilisation des Timer et gestion des Interruptions
 void MyTimer_ActiveIT ( TIM_TypeDef * Timer , char Prio , void (*IT_function ) ( void )) ;
 void MyTimer_PWM_conf( TIM_TypeDef * Timer, int Channel) ;
 void MyTimer_PWM_set_CCR( TIM_TypeDef * Timer, int Channel, int8_t CCR);
+int8_t MyTimer_PWM_calculer_CCR(TIM_TypeDef * Timer, int8_t ratio);
 
 void MyTimer_Mode_Compteur_Incremental(TIM_TypeDef * Timer);
 int My_Timer_Get_CRR(TIM_TypeDef * Timer);

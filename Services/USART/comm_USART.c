@@ -27,23 +27,23 @@ void comm_PWM_conf(MyTimer_Struct_TypeDef * Timer, int Channel){
 	MyTimer_PWM_conf(Timer->Timer, Channel);
 }
 
+int8_t comm_PWM_calculer_CCR(TIM_TypeDef * Timer, int8_t ratio){
+	return MyTimer_PWM_calculer_CCR(Timer, ratio);
+}
+
 void comm_PWM_set_CCR(MyTimer_Struct_TypeDef * Timer, int Channel, int8_t CCR){
 	MyTimer_PWM_set_CCR(Timer->Timer, Channel, CCR);
 }
 
-void comm_USART_data_sign(int8_t value, MyGPIO_Struct_TypeDef* myGPIO){
-	if(value<0)
-		myGPIO->GPIO->ODR = 0;
-	if (value>0)
-		myGPIO->GPIO->ODR = 1;
+int comm_USART_data_sign(int8_t value, MyGPIO_Struct_TypeDef* myGPIO, MyTimer_Struct_TypeDef * Timer){
+	if(value<0){
+		MyGPIO_Set(myGPIO->GPIO, myGPIO->GPIO_Pin);
+		return 0;
+	}
+	else
+		MyGPIO_Reset(myGPIO->GPIO, myGPIO->GPIO_Pin);
+	return 1;
 }
-
-int comm_USART_data_abs(int8_t value){
-	if(value >= 0 && value <= 100)
-		return abs(value);
-	return 0; //the value from the tel. is equal to 0 <=> 255
-}
-
 
 
 
