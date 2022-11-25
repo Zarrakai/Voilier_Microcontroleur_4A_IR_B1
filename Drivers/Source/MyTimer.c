@@ -2,6 +2,7 @@
 #include "MyTimer.h"
 
 void (*ptFonction ) ( void );
+void (*ptFonction_EXTI2 ) ( void );
 
 void MyTimer_Base_Init ( MyTimer_Struct_TypeDef * Timer )
 	{
@@ -70,14 +71,7 @@ void MyTimer_ActiveIT ( TIM_TypeDef * Timer , char Prio , void (*IT_function ) (
 	
 	ptFonction = IT_function;
 }
-/*
-// redéfinition de TIM2_IRQHandler
-void TIM2_IRQHandler(void)
-{
-	// désactivation de UIF
-	TIM2->SR &= ~(0x01);
-	
-}*/
+
 void TIM2_IRQHandler(void)
 {
 	// désactivation de UIF
@@ -86,16 +80,40 @@ void TIM2_IRQHandler(void)
 	
 }
 
-/*void MyTimer_PWM( TIM_TypeDef * Timer , char Channel ) 
+void EXTI2_IRQHandler(void)
 {
-	Timer->
-}*/
+	// désactivation de UIF
+	EXTI->PR |= EXTI_PR_PR2;
+	(*ptFonction_EXTI2)();
+	
+}
+
 
 void MyTimer_Mode_Compteur_Incremental(TIM_TypeDef * Timer){
 	//on met sms a 011
 	Timer->SMCR |= TIM_SMCR_SMS_0;
 	Timer->SMCR |= TIM_SMCR_SMS_1;
+	Timer->CCMR1 |= TIM_CCMR1_CC1S_1; 
+	Timer->CCMR1 |= TIM_CCMR1_CC2S_1;
+	Timer->CCER  &= ~TIM_CCER_CC1P ;
+	Timer->CCER  &= ~TIM_CCER_CC2P;
+	Timer->CCER  &= ~TIM_CCER_CC1NP;
+	Timer->CCER  &= ~TIM_CCER_CC2NP ;
+	Timer->CCMR1  &= ~TIM_CCMR1_IC1F;
+	Timer->CCMR1  &= ~TIM_CCMR1_IC2F;
+	//Timer->CR1  |= TIM_CR1_CEN;	
+	// déjà fait dans start
+
 }
+
+void MyGPIO_ActiveIT_EXTI2_PB2 ( char Prio, void (*IT_function ) ( void )) 
+{
+	NVIC_EnableIRQ(EXTI2_IRQn);
+	NVIC_SetPriority(EXTI2_IRQn, Prio);
+	
+	ptFonction_EXTI2 = IT_function;
+}
+
 int My_Timer_Get_CRR(TIM_TypeDef * Timer){
 	return Timer->ARR;
 }

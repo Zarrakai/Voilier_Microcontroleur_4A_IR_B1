@@ -5,6 +5,18 @@
 void MyGPIO_Init ( MyGPIO_Struct_TypeDef * GPIOStructPtr ) 
 {
 	
+	char conf, odr = 0;
+	if (GPIOStructPtr->GPIO_Conf == In_PullUp)
+	{
+		conf = 0x8;
+		odr = 1;
+	}
+	else
+	{
+		conf = GPIOStructPtr->GPIO_Conf;
+	}
+	
+	
 	if(GPIOStructPtr->GPIO == GPIOA)
 	{
 		RCC->APB2ENR |= RCC_APB2ENR_IOPAEN;
@@ -30,16 +42,16 @@ void MyGPIO_Init ( MyGPIO_Struct_TypeDef * GPIOStructPtr )
 	if(GPIOStructPtr->GPIO_Pin < 8)	// ecriture dans CRL
 	{
 		GPIOStructPtr->GPIO->CRL &= ~(0xf << (GPIOStructPtr->GPIO_Pin)*4);	//mise à 0 du champs CNF et MODE de PC_x
-		GPIOStructPtr->GPIO->CRL |= (GPIOStructPtr->GPIO_Conf << (GPIOStructPtr->GPIO_Pin)*4);
+		GPIOStructPtr->GPIO->CRL |= (conf << (GPIOStructPtr->GPIO_Pin)*4);
 		
 	}
 	else	// ecriture dans CRH
 	{
 		GPIOStructPtr->GPIO->CRH &= ~(0xf << (GPIOStructPtr->GPIO_Pin-8)*4);	//mise à 0 du champs CNF et MODE de PC_x
-		GPIOStructPtr->GPIO->CRH |= (GPIOStructPtr->GPIO_Conf << (GPIOStructPtr->GPIO_Pin-8)*4);
+		GPIOStructPtr->GPIO->CRH |= (conf << (GPIOStructPtr->GPIO_Pin-8)*4);
 	}
 	
-	if (GPIOStructPtr->odr == 1){
+	if (odr == 1){
 		MyGPIO_Set(GPIOStructPtr->GPIO, GPIOStructPtr->GPIO_Pin);
 	}
 	
@@ -78,4 +90,17 @@ void MyGPIO_Toggle ( GPIO_TypeDef * GPIO , char GPIO_Pin )
 	 {
 		 MyGPIO_Set(GPIO,GPIO_Pin);
 	 }
+}
+
+void MyGPIO_Activate_AFIO(void)
+{
+	RCC->APB2ENR |= RCC_APB2ENR_AFIOEN;
+}
+
+void MyGPIO_Config_exti2PB(void)
+{
+	AFIO->EXTICR[0] = AFIO_EXTICR1_EXTI2_PB;
+	
+	EXTI->IMR |= EXTI_IMR_MR2;
+	EXTI->RTSR |= EXTI_RTSR_TR2;
 }

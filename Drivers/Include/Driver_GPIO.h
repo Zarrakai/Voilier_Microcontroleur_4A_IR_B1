@@ -23,6 +23,8 @@
 	void MyGPIO_Set ( GPIO_TypeDef * GPIO , char GPIO_Pin ) ;
 	void MyGPIO_Reset ( GPIO_TypeDef * GPIO , char GPIO_Pin ) ;
 	void MyGPIO_Toggle ( GPIO_TypeDef * GPIO , char GPIO_Pin ) ;
+	void MyGPIO_Activate_AFIO(void);
+	void MyGPIO_Config_exti2PB(void);
 
 #endif
 	
