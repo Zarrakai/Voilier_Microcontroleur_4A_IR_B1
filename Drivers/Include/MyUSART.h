@@ -52,8 +52,13 @@ int is_USART_data_transmitted(USART_TypeDef* USARTx);
 int8_t USART_get_data (USART_TypeDef* USARTx);
 
 
-/* à terminer pour F4 */ 
-void USART_put_char (char * word);
+ /*
+**************************************************************************************************
+* @param : - USART_TypeDef* USARTx : USART concerné
+						- char data : caractère à afficher 
+* Permet d'envoyer data à la tele
+***************************************************************************************************/
+void USART_send_data(USART_TypeDef * USARTx, char data);
 
 #endif
 

@@ -14,10 +14,14 @@ int8_t comm_USART_get_data(USART_TypeDef * myUsart){
 }
 
 
-void USART_send_data (char * word){}
+void comm_USART_send_data(USART_TypeDef * USARTx, char * word, int length){
+	for(int i=0; i<length; i++){
+		USART_send_data(USARTx, word[i]);
+	}
+}
 
 
-
+ 
 
 
 

@@ -76,7 +76,8 @@ void USART3_IRQHandler(){
 }
 
 
-
-// à terminer pour F4
-void USART_put_char (char * word){
+void USART_send_data(USART_TypeDef * USARTx, char data){
+	USARTx->DR = data;
+	while(!(USARTx->DR & USART_SR_TXE));
+	while(!(USARTx->DR & USART_SR_TC));
 }

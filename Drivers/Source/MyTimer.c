@@ -205,7 +205,7 @@ void MyTimer_PWM_set_CCR( TIM_TypeDef * Timer, int Channel, int8_t CCR){
 }
 
 int8_t MyTimer_PWM_calculer_CCR(TIM_TypeDef * Timer, int8_t ratio){
-	return (ratio/100)*Timer->ARR;
+	return (ratio/1000)*Timer->ARR;
 }
 
 void MyTimer_ActiveIT ( TIM_TypeDef * Timer , char Prio , void (*IT_function ) ( void )) 
@@ -227,6 +227,7 @@ void MyTimer_ActiveIT ( TIM_TypeDef * Timer , char Prio , void (*IT_function ) (
 	else if (Timer == TIM4){
 		interruptNumber = TIM4_IRQn;
 	}
+	
 	NVIC_EnableIRQ(interruptNumber);
 	NVIC_SetPriority(interruptNumber, Prio);
 	

@@ -43,8 +43,7 @@ void MyTimer_PWM_set_CCR( TIM_TypeDef * Timer, int Channel, int8_t CCR);
 /*
 **************************************************************************************************
 * @param : - TIM_TypeDef * Timer : Timer concerné
-* 				 - int8_t ratio : période cyclique de PWM
-* Permet de calculer CCr à partir de la période cyclique
+* 				 - int8_t ratio :
 ***************************************************************************************************/
 int8_t MyTimer_PWM_calculer_CCR(TIM_TypeDef * Timer, int8_t ratio);
 

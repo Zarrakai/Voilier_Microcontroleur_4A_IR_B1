@@ -22,7 +22,12 @@ int8_t comm_USART_get_data (USART_TypeDef * USARTx);
 
 
 
-/* à terminer pour F4 */
-void comm_USART_send_data (char * word);
+ /*
+**************************************************************************************************
+* @param : - USART_TypeDef* USARTx : USART concerné
+					 - char * word :  données à envoyer à la telecommande
+* Permet d'appeler la fonction USART_send_data(USART_TypeDef USARTx, char data) depuis le Driver
+***************************************************************************************************/
+void comm_USART_send_data(USART_TypeDef * USARTx, char * word, int length);
 
 #endif

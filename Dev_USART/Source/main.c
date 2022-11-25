@@ -1,12 +1,15 @@
 #include "stm32f10x.h"
 #include "comm_USART.h"
 #include "comm_TIMER.h"
+#include "comm_GPIO.h"
 #include "Driver_GPIO.h"
 
-int8_t data, CCR_value;  // POUR TESTER 
+/* Variables globales pour les tests*/
+int8_t data, CCR_value;
 USART_TypeDef * myUsart = USART1;
 MyGPIO_Struct_TypeDef GPIOStruct_PWM;
 MyTimer_Struct_TypeDef TIM_PWM;
+	
 	
 void SysTick_Handler(void){
 		data = comm_USART_get_data(myUsart);
@@ -16,26 +19,18 @@ void SysTick_Handler(void){
 			comm_PWM_set_CCR(&TIM_PWM, 4, data);
 }
 	
-int main(void){
-	//tester USART
-	MyGPIO_Struct_TypeDef GPIOStruct_usart;	
-	
-	GPIOStruct_usart.GPIO = GPIOA;
-	GPIOStruct_usart.GPIO_Conf = In_Floating;
-	GPIOStruct_usart.GPIO_Pin = 10;
 
-	
-	
-	//bit du sens : orientation du bateau
-	GPIOStruct_PWM.GPIO = GPIOC;
-	GPIOStruct_PWM.GPIO_Conf = Out_Ppull;
-	GPIOStruct_PWM.GPIO_Pin = 7;
-	
-	
-	MyGPIO_Init(&GPIOStruct_usart);
-	MyGPIO_Init(&GPIOStruct_PWM);
-	
+int main(void){
+	//Tester USART
+	MyGPIO_Struct_TypeDef GPIOStruct_usart;	
+	comm_MyGPIO_Init (&GPIOStruct_usart,GPIOA, 10, In_Floating);
 	comm_USART_config(myUsart);
+	
+	
+	//Choisir un pin pour le bit du sens : orientation du bateau
+	comm_MyGPIO_Init (&GPIOStruct_PWM,GPIOC, 7, Out_Ppull);
+	
+	
 	//tester PWM
 	TIM_PWM.Timer = TIM4;
 	comm_PWM_conf_timer(&TIM_PWM);
@@ -45,5 +40,7 @@ int main(void){
 	
 	while(1);
 }
+
+
 
 

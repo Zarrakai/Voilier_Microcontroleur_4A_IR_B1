@@ -384,11 +384,6 @@
           <GroupName>MesDrivers</GroupName>
           <Files>
             <File>
-              <FileName>MyTimer.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\MesProjetsSTM32\MesDrivers\Source\MyTimer.c</FilePath>
-            </File>
-            <File>
               <FileName>Driver_GPIO.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\MesProjetsSTM32\MesDrivers\Source\Driver_GPIO.c</FilePath>
@@ -397,6 +392,11 @@
               <FileName>MyUSART.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\Drivers\Source\MyUSART.c</FilePath>
+            </File>
+            <File>
+              <FileName>MyTimer.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Drivers\Source\MyTimer.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -417,6 +417,26 @@
               <FileName>comm_USART.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\Services\USART\comm_USART.h</FilePath>
+            </File>
+            <File>
+              <FileName>comm_TIMER.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Services\TIMER\comm_TIMER.c</FilePath>
+            </File>
+            <File>
+              <FileName>comm_TIMER.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Services\TIMER\comm_TIMER.h</FilePath>
+            </File>
+            <File>
+              <FileName>comm_GPIO.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Services\GPIO\comm_GPIO.c</FilePath>
+            </File>
+            <File>
+              <FileName>comm_GPIO.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Services\GPIO\comm_GPIO.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -761,7 +781,7 @@
               <MiscControls></MiscControls>
               <Define></Define>
               <Undefine></Undefine>
-              <IncludePath>..\Drivers\Include;..\Services\USART</IncludePath>
+              <IncludePath>..\Drivers\Include;..\Services\USART;..\Services\TIMER;..\Services\GPIO</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -806,11 +826,6 @@
           <GroupName>MesDrivers</GroupName>
           <Files>
             <File>
-              <FileName>MyTimer.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\MesProjetsSTM32\MesDrivers\Source\MyTimer.c</FilePath>
-            </File>
-            <File>
               <FileName>Driver_GPIO.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\MesProjetsSTM32\MesDrivers\Source\Driver_GPIO.c</FilePath>
@@ -819,6 +834,11 @@
               <FileName>MyUSART.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\Drivers\Source\MyUSART.c</FilePath>
+            </File>
+            <File>
+              <FileName>MyTimer.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Drivers\Source\MyTimer.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -839,6 +859,26 @@
               <FileName>comm_USART.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\Services\USART\comm_USART.h</FilePath>
+            </File>
+            <File>
+              <FileName>comm_TIMER.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Services\TIMER\comm_TIMER.c</FilePath>
+            </File>
+            <File>
+              <FileName>comm_TIMER.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Services\TIMER\comm_TIMER.h</FilePath>
+            </File>
+            <File>
+              <FileName>comm_GPIO.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Services\GPIO\comm_GPIO.c</FilePath>
+            </File>
+            <File>
+              <FileName>comm_GPIO.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Services\GPIO\comm_GPIO.h</FilePath>
             </File>
           </Files>
         </Group>
