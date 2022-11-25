@@ -761,7 +761,7 @@
               <MiscControls></MiscControls>
               <Define></Define>
               <Undefine></Undefine>
-              <IncludePath>.\Include;..\Drivers\Include;..\Services\USART</IncludePath>
+              <IncludePath>..\Drivers\Include;..\Services\USART</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>

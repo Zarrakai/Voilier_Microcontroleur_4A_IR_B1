@@ -1,7 +1,7 @@
 #include "MyUSART.h"
 
 
-//Global variable = data
+/* Variable globale : contient la data reçue de la télécommande, sa valeur par défaut est 255 */
  int8_t UARTData = (int8_t)255;
  
  
@@ -56,6 +56,7 @@ int is_USART_data_transmitted(USART_TypeDef* USARTx){
 	return 0;
 }
 
+
 int8_t USART_get_data (USART_TypeDef* USARTx) {
 	int8_t old_data; 
 	old_data = (int8_t)255;
@@ -73,6 +74,7 @@ void USART1_IRQHandler(){
 void USART3_IRQHandler(){
 		UARTData = USART3->DR;
 }
+
 
 
 // à terminer pour F4

@@ -9,41 +9,68 @@ typedef struct
 	unsigned short ARR ;
 	unsigned short PSC ;
 } MyTimer_Struct_TypeDef ;
-/*
-*****************************************************************************************
-* @brief
-* @param -> Paramè t r e sous forme d ’ une s t r u c t u r e ( son a d r e s s e ) c o n t e n a n t l e s
-i n f o r m a t i o n s de base
-* @Note -> F o n c t i o n à l a n c e r s y s t é matiquement avant d ’ a l l e r p l u s en dé t a i l dans l e s
-c o n f p l u s f i n e s (PWM, codeur i n c . . . )
-*************************************************************************************************
-*/
 
+
+
+/*
+**************************************************************************************************
+* @param : - MyTimer_Struct_TypeDef * Timer : Timer concerne
+* Permet de configurer Clock, ARR et PSC
+***************************************************************************************************/
 void MyTimer_Base_Init ( MyTimer_Struct_TypeDef * Timer ) ;
 
+
 /*
 **************************************************************************************************
-* @brief
 * @param : - TIM_TypeDef * Timer : Timer concerne
-- char Prio : de 0 a 15
-* @Note : La fonction MyTimer_Base_Init doit avoir ete lancee au prealable
-Page 2 of 4
-Activité 2 : Utilisation des Timer et gestion des Interruptions
-**************************************************************************************************
-*/
-//void MyTimer_ActiveIT ( TIM_TypeDef * Timer , char Prio);
-void MyTimer_ActiveIT ( TIM_TypeDef * Timer , char Prio , void (*IT_function ) ( void )) ;
+* 				 - int Channel : un channel sur lequel on configure PWM 
+* Permet de selectionner le GPIO convenable au Timer et au Channel passeés en paramètres et le configurer
+* pour envoyer un signal PWM
+***************************************************************************************************/
 void MyTimer_PWM_conf( TIM_TypeDef * Timer, int Channel) ;
+
+
+/*
+**************************************************************************************************
+* @param : - TIM_TypeDef * Timer : Timer concerné
+* 				 - int Channel : un channel sur lequel on a configuré PWM
+*					 - int8_t CCR : la valeur à affecter au CCR
+* Permet de donner au CCR un valeur
+***************************************************************************************************/
 void MyTimer_PWM_set_CCR( TIM_TypeDef * Timer, int Channel, int8_t CCR);
+
+
+/*
+**************************************************************************************************
+* @param : - TIM_TypeDef * Timer : Timer concerné
+* 				 - int8_t ratio : période cyclique de PWM
+* Permet de calculer CCr à partir de la période cyclique
+***************************************************************************************************/
 int8_t MyTimer_PWM_calculer_CCR(TIM_TypeDef * Timer, int8_t ratio);
 
+
+/**/
+void MyTimer_ActiveIT ( TIM_TypeDef * Timer , char Prio , void (*IT_function ) ( void )) ;
+
+
+/**/
 int My_Timer_Get_CRR(TIM_TypeDef * Timer);
+
+
+/**/
 void My_Timer_Set_ARR(TIM_TypeDef * Timer,int value);
 
+
+/**/
+void My_Timer_Set_PSC(TIM_TypeDef * Timer,int value);
+	
+
+/**/
 void MyTimer_Mode_Compteur_Incremental(TIM_TypeDef * Timer);
+
+
+/**/
 void MyGPIO_ActiveIT_EXTI2_PB2 ( char Prio, void (*IT_function ) ( void )) ;
-/*
-*/
 
 
 

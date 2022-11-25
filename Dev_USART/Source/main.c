@@ -1,5 +1,6 @@
 #include "stm32f10x.h"
 #include "comm_USART.h"
+#include "comm_TIMER.h"
 #include "Driver_GPIO.h"
 
 int8_t data, CCR_value;  // POUR TESTER 
@@ -22,7 +23,7 @@ int main(void){
 	GPIOStruct_usart.GPIO = GPIOA;
 	GPIOStruct_usart.GPIO_Conf = In_Floating;
 	GPIOStruct_usart.GPIO_Pin = 10;
-	RCC->APB2ENR |= RCC_APB2ENR_AFIOEN;
+
 	
 	
 	//bit du sens : orientation du bateau
