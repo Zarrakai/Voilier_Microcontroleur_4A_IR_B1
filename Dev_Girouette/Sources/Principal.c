@@ -1,13 +1,15 @@
 #include "Girouette.h"
+#include "Driver_GPIO.h"
 
-
+// test
 int main ( void )
 {
 	MyTimer_Struct_TypeDef Timer;
-	init_girouette(&Timer);
+		
+	girouette_init(&Timer);
 	do
 	{
-		float angle = Calcul_Angle_Girouette(Timer);
+		float angle = girouette_Calcul_Angle();
 	}while ( 1 );
 }
 
