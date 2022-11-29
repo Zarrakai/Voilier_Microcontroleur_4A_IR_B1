@@ -55,6 +55,10 @@ void MyTimer_ActiveIT ( TIM_TypeDef * Timer , char Prio , void (*IT_function ) (
 /**/
 int My_Timer_Get_CRR(TIM_TypeDef * Timer);
 
+/**/
+int My_Timer_Get_CNT(TIM_TypeDef * Timer);
+
+
 
 /**/
 void My_Timer_Set_ARR(TIM_TypeDef * Timer,int value);
@@ -63,6 +67,8 @@ void My_Timer_Set_ARR(TIM_TypeDef * Timer,int value);
 /**/
 void My_Timer_Set_PSC(TIM_TypeDef * Timer,int value);
 	
+/**/
+void My_Timer_Set_CNT(TIM_TypeDef * Timer,int value);
 
 /**/
 void MyTimer_Mode_Compteur_Incremental(TIM_TypeDef * Timer);

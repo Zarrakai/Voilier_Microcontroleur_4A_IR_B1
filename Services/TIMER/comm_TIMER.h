@@ -8,9 +8,16 @@
  /*
 **************************************************************************************************
 * @param : - MyTimer_Struct_TypeDef * Timer : TIMER concerné
-Permet de configurer le Timer choisi pour PWM, son ARR et son PSC
+Permet de configurer le Timer choisi, son ARR et son PSC
 ***************************************************************************************************/
-void comm_PWM_conf_timer(MyTimer_Struct_TypeDef * Timer);
+void comm_conf_timer(MyTimer_Struct_TypeDef * Timer, int ARR, int PSC);
+
+ /*
+**************************************************************************************************
+* @param : - MyTimer_Struct_TypeDef * Timer : TIMER concerné
+Permet de configurer le Timer choisi pour une girouette, son ARR et son PSC ainsi que mode incrémental
+***************************************************************************************************/
+void comm_Girouette_conf_timer(MyTimer_Struct_TypeDef * Timer);
 
 
  /*

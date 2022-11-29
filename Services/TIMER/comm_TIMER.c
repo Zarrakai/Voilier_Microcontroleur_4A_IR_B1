@@ -5,12 +5,18 @@
 #include "stdlib.h"
 
 
-void comm_PWM_conf_timer(MyTimer_Struct_TypeDef * Timer) {
+void comm_conf_timer(MyTimer_Struct_TypeDef * Timer, int ARR, int PSC) {
 	// Timer freq = clock freq. / ((ARR+1)*(PSC+1)) <=> Timer freq = 36Mhz /((99+1)*(17+1)) = 20Khz
-	Timer->ARR = 99;
-	Timer->PSC = 17;
+	Timer->ARR = ARR;
+	Timer->PSC = PSC;
 	MyTimer_Base_Init(Timer);
 	Timer->Timer->CR1 |= TIM_CR1_CEN;
+}
+
+void comm_Girouette_conf_timer(MyTimer_Struct_TypeDef * Timer){
+
+	MyTimer_Base_Start(Timer->Timer);
+	MyTimer_Mode_Compteur_Incremental(Timer->Timer);
 }
 
 

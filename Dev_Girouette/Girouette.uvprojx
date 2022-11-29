@@ -339,7 +339,7 @@
               <MiscControls></MiscControls>
               <Define></Define>
               <Undefine></Undefine>
-              <IncludePath>..\Services\Girouette;..\Drivers\Include</IncludePath>
+              <IncludePath>..\Services\Girouette;..\Drivers\Include;..\Services\TIMER;..\Services\USART;..\Services\GPIO</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -384,11 +384,6 @@
           <GroupName>MesSources</GroupName>
           <Files>
             <File>
-              <FileName>Girouette.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Services\Girouette\Girouette.c</FilePath>
-            </File>
-            <File>
               <FileName>Principal.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\Sources\Principal.c</FilePath>
@@ -407,6 +402,26 @@
               <FileName>MyTimer.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\Drivers\Source\MyTimer.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>MesServices</GroupName>
+          <Files>
+            <File>
+              <FileName>comm_GPIO.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Services\GPIO\comm_GPIO.c</FilePath>
+            </File>
+            <File>
+              <FileName>comm_TIMER.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Services\TIMER\comm_TIMER.c</FilePath>
+            </File>
+            <File>
+              <FileName>comm_Girouette.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Services\Girouette\comm_Girouette.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -751,7 +766,7 @@
               <MiscControls></MiscControls>
               <Define></Define>
               <Undefine></Undefine>
-              <IncludePath>..\Drivers\Include;..\Services\Girouette</IncludePath>
+              <IncludePath>..\Drivers\Include;..\Services\Girouette;..\Services\USART;..\Services\GPIO;..\Services\TIMER</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -796,11 +811,6 @@
           <GroupName>MesSources</GroupName>
           <Files>
             <File>
-              <FileName>Girouette.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Services\Girouette\Girouette.c</FilePath>
-            </File>
-            <File>
               <FileName>Principal.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\Sources\Principal.c</FilePath>
@@ -819,6 +829,26 @@
               <FileName>MyTimer.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\Drivers\Source\MyTimer.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>MesServices</GroupName>
+          <Files>
+            <File>
+              <FileName>comm_GPIO.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Services\GPIO\comm_GPIO.c</FilePath>
+            </File>
+            <File>
+              <FileName>comm_TIMER.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Services\TIMER\comm_TIMER.c</FilePath>
+            </File>
+            <File>
+              <FileName>comm_Girouette.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Services\Girouette\comm_Girouette.c</FilePath>
             </File>
           </Files>
         </Group>
