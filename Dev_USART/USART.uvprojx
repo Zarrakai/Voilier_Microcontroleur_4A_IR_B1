@@ -781,7 +781,7 @@
               <MiscControls></MiscControls>
               <Define></Define>
               <Undefine></Undefine>
-              <IncludePath>..\Drivers\Include;..\Services\USART;..\Services\TIMER;..\Services\GPIO</IncludePath>
+              <IncludePath>..\Drivers\Include;..\Services\USART;..\Services\TIMER;..\Services\GPIO;..\Services\Girouette</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>

@@ -2,6 +2,7 @@
 #include "comm_USART.h"
 #include "comm_TIMER.h"
 #include "comm_GPIO.h"
+#include "comm_GIROUETTE.h"
 #include "Driver_GPIO.h"
 
 /* Variables globales pour les tests*/
@@ -17,6 +18,7 @@ void SysTick_Handler(void){
 			comm_PWM_set_CCR(&TIM_PWM, 4, (-1)*data);
 		else
 			comm_PWM_set_CCR(&TIM_PWM, 4, data);
+		comm_servo_moteur_update();
 }
 	
 
@@ -30,6 +32,8 @@ int main(void){
 	//Choisir un pin pour le bit du sens : orientation du bateau
 	comm_MyGPIO_Init (&GPIOStruct_PWM,GPIOC, 7, Out_Ppull);
 	
+	
+	comm_girouette_init();
 	
 	//tester PWM
 	TIM_PWM.Timer = TIM4;
