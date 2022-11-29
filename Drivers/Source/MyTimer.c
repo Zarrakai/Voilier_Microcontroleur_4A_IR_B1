@@ -204,8 +204,8 @@ void MyTimer_PWM_set_CCR( TIM_TypeDef * Timer, int Channel, int8_t CCR){
 	}
 }
 
-int8_t MyTimer_PWM_calculer_CCR(TIM_TypeDef * Timer, int8_t ratio){
-	return (ratio/1000)*Timer->ARR;
+int8_t MyTimer_PWM_calculer_CCR(TIM_TypeDef * Timer, int ratio){
+	return (int8_t)((ratio/1000.)*Timer->ARR);
 }
 
 void MyTimer_ActiveIT ( TIM_TypeDef * Timer , char Prio , void (*IT_function ) ( void )) 
