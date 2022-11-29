@@ -339,7 +339,7 @@
               <MiscControls></MiscControls>
               <Define></Define>
               <Undefine></Undefine>
-              <IncludePath>.\Include;..\Services\USART;..\Drivers\Include;..\Services\GPIO;..\Services\TIMER</IncludePath>
+              <IncludePath>.\Include;..\Services\USART;..\Drivers\Include;..\Services\GPIO;..\Services\TIMER;..\Services\ADC</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -409,11 +409,6 @@
           <GroupName>MesSources</GroupName>
           <Files>
             <File>
-              <FileName>main.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Source\main.c</FilePath>
-            </File>
-            <File>
               <FileName>comm_USART.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\Services\USART\comm_USART.c</FilePath>
@@ -454,14 +449,9 @@
               <FilePath>..\Services\ADC\comm_ADC.h</FilePath>
             </File>
             <File>
-              <FileName>comm_GIROUETTE.c</FileName>
+              <FileName>princip.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Services\Girouette\comm_GIROUETTE.c</FilePath>
-            </File>
-            <File>
-              <FileName>comm_GIROUETTE.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\Services\Girouette\comm_GIROUETTE.h</FilePath>
+              <FilePath>.\Source\princip.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -806,7 +796,7 @@
               <MiscControls></MiscControls>
               <Define></Define>
               <Undefine></Undefine>
-              <IncludePath>..\Drivers\Include;..\Services\USART;..\Services\TIMER;..\Services\GPIO;..\Drivers\Include;..\Drivers\Include;..\Services\ADC;..\Services\Girouette;..\Services\Girouette</IncludePath>
+              <IncludePath>..\Drivers\Include;..\Services\USART;..\Services\TIMER;..\Services\GPIO;..\Services\ADC</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -876,11 +866,6 @@
           <GroupName>MesSources</GroupName>
           <Files>
             <File>
-              <FileName>main.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Source\main.c</FilePath>
-            </File>
-            <File>
               <FileName>comm_USART.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\Services\USART\comm_USART.c</FilePath>
@@ -921,14 +906,9 @@
               <FilePath>..\Services\ADC\comm_ADC.h</FilePath>
             </File>
             <File>
-              <FileName>comm_GIROUETTE.c</FileName>
+              <FileName>princip.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Services\Girouette\comm_GIROUETTE.c</FilePath>
-            </File>
-            <File>
-              <FileName>comm_GIROUETTE.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\Services\Girouette\comm_GIROUETTE.h</FilePath>
+              <FilePath>.\Source\princip.c</FilePath>
             </File>
           </Files>
         </Group>

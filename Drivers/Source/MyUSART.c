@@ -76,8 +76,7 @@ void USART3_IRQHandler(){
 }
 
 
-void USART_send_data(USART_TypeDef * USARTx, char data){
-	USARTx->DR = data;
-	while(!(USARTx->DR & USART_SR_TXE));
-	while(!(USARTx->DR & USART_SR_TC));
+void USART_send_data(USART_TypeDef * USARTx, char caractere){
+	USARTx->DR = caractere;
+	while(!(USARTx->SR & USART_SR_TC));
 }
