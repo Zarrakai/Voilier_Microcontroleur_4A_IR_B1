@@ -8,7 +8,7 @@
 #include "Driver_GPIO.h"
 
 /* Variables globales pour les tests*/
-int8_t data, CCR_value;
+int8_t data, CCR_value, Vbat;
 USART_TypeDef * myUsart = USART1;
 MyGPIO_Struct_TypeDef GPIOStruct_PWM;
 MyTimer_Struct_TypeDef TIM_PWM;
@@ -30,8 +30,6 @@ int main(void){
 	char* transmit = " Hello world !\n";
 	MyGPIO_Struct_TypeDef GPIOStruct_usart;	
 	
-	// variables ADC
-	int Vbat;
 	char *msg = " Bat faible !\n";
 	MyGPIO_Struct_TypeDef GPIOStructPtr, GPIOStructPtrTX;
 	
